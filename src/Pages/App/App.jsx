@@ -1,25 +1,44 @@
-import '../../App.css'
+import { BrowserRouter, useRoutes } from "react-router-dom";
+import "../../App.css";
 
-import Home from '../Home'
-import MyAcount from '../MyAccounts'
-import MyOders from '../MyOrders'
-import NotFound from '../NotFound'
-import Singin from '../Singin'
+import Home from "../Home";
+import MyAcount from "../MyAccounts";
+import MyOders from "../MyOrders";
+import NotFound from "../NotFound";
+import Singin from "../Singin";
 
-function App() {
+const AppRoutes = () => {
+  let routes = useRoutes([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/myacount",
+      element: <MyAcount />,
+    },
+    {
+      path: "/myoders",
+      element: <MyOders />,
+    },
+    {
+      path: "/singin",
+      element: <Singin />,
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+  ]);
+  return routes;
+};
 
+const App = () => {
   return (
-    <>
-      <div className='bg-red-200'>
-        hola MUNDO
-      </div>
-      <Home />
-      <MyAcount />
-      <MyOders />
-      <NotFound />
-      <Singin />
-    </>
-  )
-}
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
