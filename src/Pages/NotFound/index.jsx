@@ -1,8 +1,10 @@
+import Layaut from "../../Components/Layout";
+
 function NotFound() {
   return (
-    <div>
-      <h1>NotFound</h1>
-    </div>
+    <Layaut>
+      <h1>2</h1>
+    </Layaut>
   );
 }
 

@@ -6,7 +6,7 @@ const Navbar = () => {
   const activeStyle = 'text-blue-500 font-semibold border-b-2 border-blue-500';
 
   return (
-    <nav className="w-full h-20 flex items-center fixed z-10 py-5 px-8 text-sm font-light justify-between">
+    <nav className="w-full h-20 flex items-center fixed z-10 py-5 px-8 text-sm font-light justify-between top-0">
       <ul className="flex space-x-4 items-center">
         <li className="font-semibold text-lg">
           <NavLink to="/">Shopi</NavLink>

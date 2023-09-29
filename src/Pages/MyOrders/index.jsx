@@ -1,8 +1,10 @@
+import Layaut from "../../Components/Layout";
+
 function MyOders() {
   return (
-    <div>
-      <h1>MyOders</h1>
-    </div>
+    <Layaut>
+      <h1>3</h1>
+    </Layaut>
   );
 }
 

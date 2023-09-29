@@ -1,8 +1,10 @@
+import Layaut from "../../Components/Layout";
+
 function MyAcount() {
   return (
-    <div>
-      <h1>MyAcount</h1>
-    </div>
+    <Layaut>
+      <h1>4</h1>
+    </Layaut>
   );
 }
 

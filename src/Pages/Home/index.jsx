@@ -1,8 +1,10 @@
+import Layaut from "../../Components/Layout";
+
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <Layaut>
+        <h1>Home</h1>
+    </Layaut>
   );
 }
 
