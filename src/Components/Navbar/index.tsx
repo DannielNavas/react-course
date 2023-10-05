@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { ShoppingCartContext } from "../../Context";
 
 const Navbar = () => {
 
   const activeStyle = 'text-blue-500 font-semibold border-b-2 border-blue-500';
+
+  const context = useContext(ShoppingCartContext);
 
   return (
     <nav className="w-full h-20 flex items-center fixed z-10 py-5 px-8 text-sm font-light justify-between top-0">
@@ -95,7 +98,7 @@ const Navbar = () => {
             Sign in
           </NavLink>
         </li>
-        <li>🛒</li>
+        <li>🛒 {context.count} </li>
       </ul>
     </nav>
   );
