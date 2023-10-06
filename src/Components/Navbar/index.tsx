@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
+
 const Navbar = () => {
 
   const activeStyle = 'text-blue-500 font-semibold border-b-2 border-blue-500';
@@ -98,7 +100,10 @@ const Navbar = () => {
             Sign in
           </NavLink>
         </li>
-        <li>🛒 {context.count} </li>
+        <li className="flex justify-center items-center">
+          <ShoppingCartIcon className="w-4 h-4 text-black/60" />
+          <div>{context.count}</div>
+        </li>
       </ul>
     </nav>
   );
