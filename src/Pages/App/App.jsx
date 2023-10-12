@@ -2,6 +2,7 @@ import { BrowserRouter, useRoutes } from "react-router-dom";
 import "../../App.css";
 import { ShoppingCartProvider } from "../../Context";
 
+import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
 import Navbar from "../../Components/Navbar";
 import Home from "../Home";
 import MyAcount from "../MyAccounts";
@@ -39,7 +40,8 @@ const App = () => {
   return (
     <ShoppingCartProvider>
     <BrowserRouter>
-      <Navbar></Navbar>
+        <Navbar></Navbar>
+        <CheckoutSideMenu />
       <AppRoutes />
       </BrowserRouter>
     </ShoppingCartProvider>
