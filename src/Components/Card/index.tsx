@@ -1,4 +1,4 @@
-import { PlusIcon } from "@heroicons/react/24/solid";
+import { CheckIcon, PlusIcon } from "@heroicons/react/24/solid";
 import React, { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 
@@ -17,6 +17,30 @@ const Card = (data) => {
     context.openCheckoutSideMenu();
   }
 
+  const renderIcon = (idProduct) => {
+    const isInCart = context.cartProducts?.filter(
+      (product) => product.id === idProduct
+    ).length > 0;
+
+    if (isInCart) {
+      return (
+        <button
+          className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1"
+        >
+          <CheckIcon className="w-4 h-4 text-white"></CheckIcon>
+        </button>
+      );
+    }
+      return (
+        <button
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          onClick={(event) => addProductsToCart(event, data)}
+        >
+          <PlusIcon className="w-4 h-4 text-black"></PlusIcon>
+        </button>
+      );
+  }
+
 
   return (
     <div
@@ -32,12 +56,7 @@ const Card = (data) => {
           src={data.images[0]}
           alt="Headphones"
         />
-        <button
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-          onClick={(event) => addProductsToCart(event, data)}
-        >
-          <PlusIcon className="w-4 h-4 text-black"></PlusIcon>
-        </button>
+        {renderIcon(data.id)}
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light">{data.title}</span>
