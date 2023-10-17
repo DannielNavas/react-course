@@ -14,6 +14,17 @@ const CheckoutSideMenu = () => {
     );
     context.setCartProducts(filteredProducts);
   }
+  const handlerCheckout = () => {
+    const orderToAdd = {
+      products: context.cartProducts,
+      total: totalPrice(context.cartProducts),
+      totalProducts: context.cartProducts.length,
+      date: new Date(),
+    }
+    context.setOrder([...context.order, orderToAdd]);
+    context.setCartProducts([]);
+    context.closeCheckoutSideMenu();
+  }
   return (
     <aside
       className={`${
@@ -29,7 +40,7 @@ const CheckoutSideMenu = () => {
           ></XMarkIcon>
         </div>
       </div>
-      <div className="overflow-y-scroll">
+      <div className="px-6 overflow-y-scroll flex-1">
         {context.cartProducts?.map((product, index) => (
           <OrderCard
             key={index}
@@ -41,11 +52,14 @@ const CheckoutSideMenu = () => {
           />
         ))}
       </div>
-      <div className="px-6">
+      <div className="px-6 mb-6">
         <p className="flex justify-between items-center">
           <span className="font-light">Total:</span>
           <span className="font-medium text-2xl"> ${totalPrice(context.cartProducts)}</span>
-          </p>
+        </p>
+        <button onClick={() => handlerCheckout()} className="w-full bg-black text-white rounded-lg py-2 mt-4">
+          Checkout
+        </button>
       </div>
     </aside>
   );
