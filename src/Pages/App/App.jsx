@@ -6,6 +6,7 @@ import CheckoutSideMenu from "../../Components/CheckoutSideMenu";
 import Navbar from "../../Components/Navbar";
 import Home from "../Home";
 import MyAcount from "../MyAccounts";
+import MyOder from "../MyOrder";
 import MyOders from "../MyOrders";
 import NotFound from "../NotFound";
 import Singin from "../Singin";
@@ -26,7 +27,7 @@ const AppRoutes = () => {
     },
     {
       path: "/myoders/last",
-      element: <MyOders />,
+      element: <MyOder />,
     },
     {
       path: "/singin",
