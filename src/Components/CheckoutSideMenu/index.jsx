@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 import { totalPrice } from "../../utils";
 
+import { Link } from "react-router-dom";
 import OrderCard from "../OrderCard";
 import "./styles.css";
 
@@ -55,11 +56,19 @@ const CheckoutSideMenu = () => {
       <div className="px-6 mb-6">
         <p className="flex justify-between items-center">
           <span className="font-light">Total:</span>
-          <span className="font-medium text-2xl"> ${totalPrice(context.cartProducts)}</span>
+          <span className="font-medium text-2xl">
+            {" "}
+            ${totalPrice(context.cartProducts)}
+          </span>
         </p>
-        <button onClick={() => handlerCheckout()} className="w-full bg-black text-white rounded-lg py-2 mt-4">
-          Checkout
-        </button>
+        <Link to="/myoders/last">
+          <button
+            onClick={() => handlerCheckout()}
+            className="w-full bg-black text-white rounded-lg py-2 mt-4"
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );

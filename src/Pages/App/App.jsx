@@ -25,6 +25,10 @@ const AppRoutes = () => {
       element: <MyOders />,
     },
     {
+      path: "/myoders/last",
+      element: <MyOders />,
+    },
+    {
       path: "/singin",
       element: <Singin />,
     },
