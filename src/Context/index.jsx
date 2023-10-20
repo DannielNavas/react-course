@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+
 export const ShoppingCartContext = createContext();
+
+export const apiUrl = "https://api.escuelajs.co/api/v1";
 
 export const ShoppingCartProvider = ({ children }) => {
   const [count, setCount] = useState(0);
@@ -12,6 +15,9 @@ export const ShoppingCartProvider = ({ children }) => {
 
   const [order, setOrder] = useState([]);
 
+  const [searchByTitle, setSearchByTitle] = useState(null);
+  const [filteredItems, setFilteredItems] = useState(null);
+
   const openProductDetail = () => setIsProductDetailOpen(true);
   const closeProductDetail = () => setIsProductDetailOpen(false);
 
@@ -19,6 +25,26 @@ export const ShoppingCartProvider = ({ children }) => {
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
 
+
+
+  // products
+
+   const [items, setItems] = useState(null);
+
+   useEffect(() => {
+     fetch(`${apiUrl}/products`)
+       .then((res) => res.json())
+       .then((data) => setItems(data));
+   }, []);
+
+
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter((item) => item.title?.toLowerCase().includes(searchByTitle?.toLowerCase()));
+  }
+
+  useEffect(() => {
+    if(searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle));
+  }, [items, searchByTitle]);
 
   return (
     <ShoppingCartContext.Provider
@@ -37,6 +63,11 @@ export const ShoppingCartProvider = ({ children }) => {
         isCheckoutSideMenuOpen,
         order,
         setOrder,
+        items,
+        setItems,
+        searchByTitle,
+        setSearchByTitle,
+        filteredItems,
       }}
     >
       {children}
